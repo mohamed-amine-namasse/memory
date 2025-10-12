@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  gap: 15px;
+  perspective: 1000px;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card input {
+  display: none;
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  backface-visibility: hidden;
+}
+
+.card .front {
+  background: #ffffff22;
+  backdrop-filter: blur(8px);
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.card .front:hover {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+.card .back {
+  background: #fff;
+  color: #333;
+  transform: rotateY(180deg);
+}
+
+/* Flip effect */
+.card input:checked ~ .inner {
+  transform: rotateY(180deg);
+}
+
+.card .inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  position: relative;
+}
+@media (max-width: 480px) {
+  .game-container {
+    grid-template-columns: repeat(2, 100px);
+  }
+}
