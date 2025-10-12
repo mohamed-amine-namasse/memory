@@ -65,6 +65,12 @@ ul li a .icon .fa {
   color: #000;
 }
 
+ul li a.active .icon .fa {
+  color: #e91e63;
+}
+ul li a.active .name {
+  color: #e91e63;
+}
 ul li a:hover .icon .fa {
   color: #e91e63;
 }
