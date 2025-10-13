@@ -84,12 +84,14 @@ if (!isset($_SESSION['user_id'])) {
        <div class=container_form>
             <div>
                 <form action="game.php" method="get">
-                    <label for="pairs">Nombre de paires :</label>
-                    <select name="pairs" id="pairs" required>
-                        <?php for ($i = 3; $i <= 12; $i++): ?>
-                        <option value="<?= $i ?>"><?= $i ?></option>
-                        <?php endfor; ?>
-                    </select>
+                   
+                        <label for="pairs">Nombre de paires :</label>
+                        <select name="pairs" id="pairs" required>
+                            <?php for ($i = 3; $i <= 12; $i++): ?>
+                            <option value="<?= $i ?>"><?= $i ?></option>
+                            <?php endfor; ?>
+                        </select>
+                  
                     <div class=btn>
                         <input class=bouton_submit type="submit" value="Jouer">
                 

@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit;
 }
- $message = '';      // Message à afficher à l'utilisateur
+ $error = '';      // Message d'erreur à afficher à l'utilisateur
         
 
 
@@ -104,6 +104,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
         </ul>
     </header>
     <main>
+        <?php if ($error): ?>
+        <p class="error" ><?= htmlspecialchars($error) ?></p>
+        <?php endif; ?>
         <div class=container_form>
             <div>
                 <h2>Connexion</h2>

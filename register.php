@@ -110,6 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </ul>
     </header>
 
+    
+   <main>
     <?php if ($error): ?>
         <p class="error" ><?= htmlspecialchars($error) ?></p>
     <?php endif; ?>
@@ -117,7 +119,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if ($success): ?>
         <p class="success"><?= htmlspecialchars($success) ?></p>
     <?php endif; ?>
-   <main>
         <div class=container_form>
                 <div>
                     <h2>Création de compte</h2>
@@ -128,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label><b>Login:</b></label><br>
                         <input type="email" name="email" placeholder="votre@email.com"><br>
                         <label><b>Password:</b></label><br>
-                        <input type="text" name="password" placeholder="Au moins 8 caractères"><br>
+                        <input type="text" name="password" placeholder="Au moins 8 caractères,Maj+Min,caractere special"><br>
                         <label><b>Confirmation Password:</b></label><br>
                         <input type="text" name="confirm_password" placeholder="Confirmez votre mot de passe">
                         <div class=btn>
