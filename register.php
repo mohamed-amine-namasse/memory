@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$email, $hashed]);
 
             $success = "Compte créé avec succès ! Vous pouvez maintenant vous connecter.";
-            header("Refresh:2; url=login.php");
+            header("Refresh:1; url=login.php");
         }
     }
 }
