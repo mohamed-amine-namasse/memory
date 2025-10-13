@@ -23,33 +23,61 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 
 <body>
-    <header>
+     <header>
         <ul>
             <li>
                 <a href="./index.php" class="active">
                     <div class="icon">
-                        <i class="fa fa-home"></i>
+                        <i class="fa fa-gamepad"></i>
                     </div>
-                    <div class="name">Home</div>
+                    <div class="name">Jouer</div>
                 </a>
             </li>
-            <li>
-                <a href="./profile.php" class="#">
-                    <div class="icon">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <div class="name">Profil</div>
-                </a>
-            </li>
-            <li>
-                <a href="./logout.php" class="#">
-                    <div class="icon">
-                        <i class="fa fa-sign-out"></i>
-                        
-                    </div>
-                    <div class="name">Deconnexion</div>
-                </a>
-            </li>
+            <?php if (!isset($_SESSION['email'])): ?>
+                    <li>
+
+                        <a href="./login.php" class="#">
+                            <div class="icon">
+                                <i class="fa fa-user-circle-o"></i>
+                            </div>
+                            <div class="name">Se connecter</div>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="./register.php" class="#">
+                            <div class="icon">
+                                <i class="fa fa-user-plus"></i>
+                            </div>
+                            <div class="name">Inscription</div>
+                        </a>
+                    </li>
+            <?php else: ?>
+                     <li>
+                        <a href="./profile.php" class="#">
+                            <div class="icon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="name">Profil</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./leaderboard.php" class="#">
+                            <div class="icon">
+                                <i class="fa fa-trophy"></i>
+                            </div>
+                            <div class="name">Classement</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./logout.php" class="#">
+                            <div class="icon">
+                                <i class="fa fa-sign-out"></i>
+                            </div>
+                            <div class="name">Deconnexion</div>
+                        </a>
+                    </li>
+            <?php endif; ?>
         </ul>
     </header>
     <main>

@@ -60,14 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
    <header>
         <ul>
-            <li>
-                <a href="./index.php" class="#">
-                    <div class="icon">
-                        <i class="fa fa-home"></i>
-                    </div>
-                    <div class="name">Home</div>
-                </a>
-            </li>
+           
             <?php if (!isset($_SESSION['email'])): ?>
                     <li>
 
@@ -88,6 +81,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </a>
                     </li>
             <?php else: ?>
+                    
+                    <li>
+                        <a href="./profile.php" class="#">
+                            <div class="icon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="name">Profil</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./leaderboard.php" class="#">
+                            <div class="icon">
+                                <i class="fa fa-trophy"></i>
+                            </div>
+                            <div class="name">Classement</div>
+                        </a>
+                    </li>
                     <li>
                         <a href="./logout.php" class="#">
                             <div class="icon">

@@ -197,6 +197,17 @@ form label {
   background-color: rgb(52, 145, 52);
 }
 
+table {
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+}
+
 @media (max-width: 480px) {
   .game-container {
     grid-template-columns: repeat(2, 100px);
