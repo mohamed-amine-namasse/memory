@@ -13,12 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirm = $_POST['confirm_password'];
+    $re = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$.!%(+;)\*\/\-_{}#~$*%:!,<²°>ù^`|@[\]*?&]).{8,}$/';
 
     if (empty($email) || empty($password) || empty($confirm)) {
         $error = "Tous les champs sont obligatoires.";
     } elseif ($password !== $confirm) {
         $error = "Les mots de passe ne correspondent pas.";
-    } else {
+    } elseif (!preg_match($re, $password))
+    {$error= "Mot de passe non sécurisé ! Veuillez ajouter au moins une minuscule, une majuscule, un chiffre, un caractère spécial ainsi qu'un minimum de 8 caractères au total";}
+     else {
         $db = Database::getConnection();
 
         // Vérifie si l'utilisateur existe déjà
@@ -115,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label><b>Login:</b></label><br>
                         <input type="email" name="email" placeholder="votre@email.com"><br>
                         <label><b>Password:</b></label><br>
-                        <input type="text" name="password" placeholder="Votre mot de passe"><br>
+                        <input type="text" name="password" placeholder="Au moins 8 caractères"><br>
                         <label><b>Confirmation Password:</b></label><br>
                         <input type="text" name="confirm_password" placeholder="Confirmez votre mot de passe">
                         <div class=btn>

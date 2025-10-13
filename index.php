@@ -34,6 +34,14 @@ if (!isset($_SESSION['user_id'])) {
                 </a>
             </li>
             <li>
+                <a href="./profile.php" class="#">
+                    <div class="icon">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="name">Profil</div>
+                </a>
+            </li>
+            <li>
                 <a href="./logout.php" class="#">
                     <div class="icon">
                         <i class="fa fa-sign-out"></i>

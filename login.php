@@ -55,14 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
 <body>
     <header>
         <ul>
-            <li>
-                <a href="./index.php" class="#">
-                    <div class="icon">
-                        <i class="fa fa-home"></i>
-                    </div>
-                    <div class="name">Home</div>
-                </a>
-            </li>
+            
             <?php if (!isset($_SESSION['email'])): ?>
                     <li>
 
