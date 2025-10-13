@@ -4,10 +4,10 @@ namespace Classes;
 use Config\Database;
 
 class Score {
-    public static function save(int $userId, int $pairs, int $moves, int $duration): void {
+    public static function save(int $userId, int $pairs, int $moves, int $score): void {
         $db = Database::getConnection();
-        $stmt = $db->prepare("INSERT INTO scores (user_id, pairs, moves, duration) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$userId, $pairs, $moves, $duration]);
+        $stmt = $db->prepare("INSERT INTO scores (user_id, pairs, moves, score) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$userId, $pairs, $moves, $score]);
     }
 
     public static function top10(): array {

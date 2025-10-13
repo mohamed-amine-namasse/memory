@@ -10,6 +10,7 @@ class Card {
         $this->emoji = $emoji;
     }
 
+
     public function renderCardHtml(int $index): string {
         return '
         <label class="card">
@@ -20,4 +21,6 @@ class Card {
             </div>
         </label>';
     }
-}
+   public function getEmoji(): string {
+        return $this->emoji;
+    }}

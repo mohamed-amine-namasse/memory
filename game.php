@@ -1,15 +1,34 @@
 <?php
 session_start();
+
 require 'config/Database.php';
 require 'classes/Card.php';
 require 'classes/Game.php';
 
 use Classes\Game;
-
+use Config\Database;
+date_default_timezone_set('Europe/Paris');
 $pairs = isset($_GET['pairs']) ? (int) $_GET['pairs'] : 6;
 $pairs = max(3, min($pairs, 12));
 
 $game = new Game($pairs);
+$_SESSION['username']=$_GET['player'];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['flip'])) {
+    $game->handleClick((int) $_POST['flip']);
+}
+
+if (isset($_POST["submit"]) ) {
+$user_id=$_POST['user_id'];
+$pairs=$_POST['pairs'];
+$moves=$_POST['moves'];
+$score=$_POST['score'];
+$created_at=(new DateTime())->format('Y-m-d H:i:s');
+$db = Database::getConnection();
+$stmt = $db->prepare("INSERT INTO scores (user_id,pairs,moves,score,created_at) VALUES (?, ?,?,?,?)");
+$stmt->execute([$user_id, $pairs,$moves,$score,$created_at]);
+header("Location: profile.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -85,7 +104,7 @@ $game = new Game($pairs);
         </ul>
     </header>
     <main>
-        <div>
+        
             <div class="game-container">
                 <?php
                 $pairs = isset($_GET['pairs']) ? (int) $_GET['pairs'] : 6;
@@ -109,11 +128,31 @@ $game = new Game($pairs);
                 echo "<div class='game-container' style='display:grid; gap:15px; grid-template-columns: repeat($columns, 1fr);'>";
                 $game->renderBoard();
                 echo "</div>";
+                
                 ?>
-             
-             
+                <br>
+                <p>Paires trouvées : <?= count($game->found) ?> / <?= $game->pairCount * 2 ?></p>
+                <br>
+                <p>Nombre de coups : <?= $game->getMoves() ?></p>
+          
             </div>
-       
+                <?php if ($game->isFinished()): ?>
+                <div class="score">
+                    <h2>Félicitations ! <?= htmlspecialchars($_SESSION['username']) ?> !</h2>
+                    <p>Nombre de coups : <?= $game->getMoves() ?></p>
+                    <p>Score : <?= $game->getScore() ?></p>
+                    
+                    <p>Paires trouvées : <?= count($game->found) ?> / <?= $game->pairCount * 2 ?></p>
+                    <form method="post" action="game.php">
+                        <input type="hidden" name="score" value="<?= $game->getScore() ?>">
+                        <input type="hidden" name="moves" value="<?= $game->getMoves() ?>">
+                        <input type="hidden" name="pairs" value="<?= $game->getPairCount() ?>">
+                        <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?? '' ?>">
+                        <button type="submit" name="submit">Enregistrer mon score</button>
+                    </form>
+                </div>
+            <?php endif; ?>
+
     </main>
 
   

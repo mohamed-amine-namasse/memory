@@ -1,5 +1,5 @@
 <?php
-require 'config/Database.php';
+namespace classes;
 use Config\Database;
 session_start();
 

@@ -94,7 +94,7 @@ $scores = $stmt->fetchAll();
             <td><?= $score['created_at'] ?></td>
             <td><?= $score['pairs'] ?></td>
             <td><?= $score['moves'] ?></td>
-            <td><?= $score['duration'] ?> sec</td>
+            <td><?= $score['score'] ?> sec</td>
           </tr>
         <?php endforeach; ?>
       </table>
