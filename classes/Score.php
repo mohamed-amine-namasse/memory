@@ -13,7 +13,7 @@ class Score {
     public static function top10(): array {
         $db = Database::getConnection();
         $stmt = $db->query("
-            SELECT u.username, MIN(s.moves) as best_moves
+            SELECT u.email, MIN(s.moves) as best_moves
             FROM scores s
             JOIN users u ON u.id = s.user_id
             GROUP BY s.user_id

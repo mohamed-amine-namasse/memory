@@ -1,5 +1,6 @@
 <?php
-namespace classes;
+
+require 'config/database.php';
 use Config\Database;
 session_start();
 
@@ -89,14 +90,17 @@ $leaders = $stmt->fetchAll();
         </ul>
     </header>
   <main>
-     
-        <h2>Top 10 joueurs</h2>
+     <div>
+        <h2 id="orange">Top 10 joueurs:</h2>
+        
         <ol>
           <?php foreach ($leaders as $player): ?>
-            <li><?= htmlspecialchars($player['username']) ?> - <?= $player['best_moves'] ?> coups</li>
+            <br>
+
+            <li><b><?= htmlspecialchars($player['email']) ?> - <?= $player['best_moves'] ?> coups</b></li>
           <?php endforeach; ?>
         </ol>
-     
+     </div>
   </main>
 </body>
 </html>

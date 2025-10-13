@@ -29,6 +29,9 @@ main {
 h2 {
   text-align: center;
 }
+#orange {
+  color: darkorange;
+}
 ul {
   display: flex;
   padding: 20px;
@@ -208,6 +211,7 @@ select {
 table {
   border-collapse: collapse;
   margin-top: 30px;
+  background-color: tan;
 }
 
 th,

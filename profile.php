@@ -88,13 +88,13 @@ $scores = $stmt->fetchAll();
       <div>
       <h2>Mes scores récents</h2>
       <table>
-        <tr><th>Date</th><th>Paires</th><th>Coups</th><th>Durée</th></tr>
+        <tr><th>Date</th><th>Paires</th><th>Coups</th><th>Score</th></tr>
         <?php foreach ($scores as $score): ?>
           <tr>
             <td><?= $score['created_at'] ?></td>
             <td><?= $score['pairs'] ?></td>
             <td><?= $score['moves'] ?></td>
-            <td><?= $score['score'] ?> sec</td>
+            <td><?= $score['score'] ?> Pts</td>
           </tr>
         <?php endforeach; ?>
       </table>
