@@ -97,7 +97,7 @@ $leaders = $stmt->fetchAll();
           <?php foreach ($leaders as $player): ?>
             <br>
 
-            <li><b><?= htmlspecialchars($player['email']) ?> - <?= $player['best_moves'] ?> coups</b></li>
+            <li id="big"><b><?= htmlspecialchars($player['email']) ?> - <?= $player['best_moves'] ?> coups</b></li>
           <?php endforeach; ?>
         </ol>
      </div>

@@ -135,24 +135,26 @@ header("Location: profile.php");
                 <br>
                 <p>Nombre de coups : <?= $game->getMoves() ?></p>
           
-            </div>
+           </div>
                 <?php if ($game->isFinished()): ?>
                 <div class="score">
                     <h2>Félicitations ! <?= htmlspecialchars($_SESSION['username']) ?> !</h2>
                     <p>Nombre de coups : <?= $game->getMoves() ?></p>
                     <p>Score : <?= $game->getScore() ?></p>
                     
-                    <p>Paires trouvées : <?= count($game->found) ?> / <?= $game->pairCount * 2 ?></p>
+                    <p>Paires trouvées : <?= count($game->found) ?> / <?= $game->pairCount * 2 ?></p> 
+                
                     <form method="post" action="game.php">
                         <input type="hidden" name="score" value="<?= $game->getScore() ?>">
                         <input type="hidden" name="moves" value="<?= $game->getMoves() ?>">
                         <input type="hidden" name="pairs" value="<?= $game->getPairCount() ?>">
                         <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?? '' ?>">
+                        <br>
                         <button type="submit" name="submit">Enregistrer mon score</button>
                     </form>
-                </div>
+               </div>
             <?php endif; ?>
-
+         
     </main>
 
   
