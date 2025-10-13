@@ -99,6 +99,7 @@ $scores = $stmt->fetchAll();
         <?php endforeach; ?>
       </table>
     </div>
+    
     </main>
     
 </body>

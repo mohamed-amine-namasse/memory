@@ -7,11 +7,11 @@ session_start();
 $user_id = $_SESSION['user_id'];
 $db = Database::getConnection();
 $stmt = $db->query("
-  SELECT u.email, MIN(s.moves) as best_moves
+  SELECT u.email, MAX(s.score) as best_score
   FROM scores s
   JOIN users u ON u.id = s.user_id
   GROUP BY user_id
-  ORDER BY best_moves ASC
+  ORDER BY best_score DESC
   LIMIT 10
 ");
 $leaders = $stmt->fetchAll();
@@ -97,7 +97,7 @@ $leaders = $stmt->fetchAll();
           <?php foreach ($leaders as $player): ?>
             <br>
 
-            <li id="big"><b><?= htmlspecialchars($player['email']) ?> - <?= $player['best_moves'] ?> coups</b></li>
+            <li id="big"><b><?= htmlspecialchars($player['email']) ?> - <?= $player['best_score'] ?> Pts</b></li>
           <?php endforeach; ?>
         </ol>
      </div>
