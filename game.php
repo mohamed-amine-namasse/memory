@@ -2,21 +2,42 @@
 session_start();
 
 
-
 require 'classes/Game.php';
 
+$error = "";
 
 date_default_timezone_set('Europe/Paris');
-$pairs = isset($_GET['pairs']) ? (int) $_GET['pairs'] : 6;
-$pairs = max(3, min($pairs, 12));
+// Sécurisation de "pairs"
+$pairs = 6;
+if (isset($_GET['pairs']) && ctype_digit($_GET['pairs'])) {
+    $value = (int) $_GET['pairs'];
+    if ($value >= 3 && $value <= 12) {
+        $pairs = $value;
+    }
+}
+
+if (!isset($_GET['pairs']) || !ctype_digit($_GET['pairs']) || $_GET['pairs'] < 3 || $_GET['pairs'] > 12) {
+    $error = "La valeur des paires doit être comprise entre 3 et 12";
+   
+}
+
+
 
 $game = new Game($pairs);
-$_SESSION['username']=$_GET['player'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['flip'])) {
     $game->handleClick((int) $_POST['flip']);
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reset'])) {
+    $resetPairs = isset($_POST['pairs']) ? (int) $_POST['pairs'] : 6;
 
+    // Réinitialise les données de session liées au jeu
+    $game->resetGame();
+
+    // Redirige pour repartir de zéro
+    header("Location: game.php?pairs=$resetPairs");
+    exit;
+}
 if (isset($_POST["submit"]) ) {
 $user_id=$_POST['user_id'];
 $pairs=$_POST['pairs'];
@@ -103,10 +124,13 @@ header("Location: profile.php");
         </ul>
     </header>
     <main>
-        
+        <?php if ($error): ?>
+             <p class="error" ><?= htmlspecialchars($error) ?></p>
+        <?php endif; ?>
+     
             <div class="game-container">
                 <?php
-                $pairs = isset($_GET['pairs']) ? (int) $_GET['pairs'] : 6;
+            
                 $totalCards = $pairs * 2;
 
                 
@@ -121,7 +145,7 @@ header("Location: profile.php");
                 case 10: $columns = 10; break;
                 case 11: $columns =8; break;
                 case 12: $columns = 8; break;
-                default: $columns = 4;
+                
                 }
                
                 echo "<div class='game-container' style='display:grid; gap:15px; grid-template-columns: repeat($columns, 1fr);'>";
@@ -148,8 +172,11 @@ header("Location: profile.php");
                         <input type="hidden" name="moves" value="<?= $game->getMoves() ?>">
                         <input type="hidden" name="pairs" value="<?= $game->getPairCount() ?>">
                         <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?? '' ?>">
+                        <input type="hidden" name="reset" value="1">
+                        <input type="hidden" name="pairs" value="<?= $pairs ?>">
                         <br>
                         <button type="submit" name="submit">Enregistrer mon score</button>
+                        <button type="submit" name="reset">Réinitialiser la partie</button>
                     </form>
                </div>
             <?php endif; ?>
