@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-require 'config/database.php';
+
 require 'classes/User.php';
  
 
-use Classes\User;
+
 
 // Redirection si déjà connecté
 if (isset($_SESSION['user_id'])) {

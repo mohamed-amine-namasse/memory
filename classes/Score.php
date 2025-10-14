@@ -1,8 +1,6 @@
 <?php
-namespace Classes;
 
-use Config\Database;
-
+require 'config/database.php';
 class Score {
     public static function save(int $userId, int $pairs, int $moves, int $score): void {
         $db = Database::getConnection();

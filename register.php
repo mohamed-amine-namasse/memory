@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-require 'config/Database.php';
+require 'config/database.php';
 
-use Config\Database;
+
 
 $error = "";
 $success = "";

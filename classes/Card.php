@@ -1,5 +1,5 @@
 <?php
-namespace Classes;
+
 
 class Card {
     public int $id;
@@ -10,19 +10,7 @@ class Card {
         $this->emoji = $emoji;
     }
 
-/*
-   public function renderCardHtml(int $index): string {
-        return '
-        <label class="card">
-            <input type="checkbox" name="card' . $index . '" />
-            <div class="inner">
-                <div class="front">?</div>
-                <div class="back">' . htmlspecialchars($this->emoji) . '</div>
-            </div>
-        </label>';
-    }
 
-*/
 
 public function renderCardHtml(int $index, bool $isFlipped = false, bool $isFound = false): string {
     $showEmoji = ($isFlipped || $isFound);

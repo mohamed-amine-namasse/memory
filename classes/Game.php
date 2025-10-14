@@ -1,6 +1,6 @@
 <?php
-namespace Classes;
-use Config\Database;
+require 'config/database.php';
+require 'Card.php';
 
 class Game {
     public array $cards = [];

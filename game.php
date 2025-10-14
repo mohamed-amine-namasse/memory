@@ -1,12 +1,11 @@
 <?php
 session_start();
 
-require 'config/Database.php';
-require 'classes/Card.php';
+
+
 require 'classes/Game.php';
 
-use Classes\Game;
-use Config\Database;
+
 date_default_timezone_set('Europe/Paris');
 $pairs = isset($_GET['pairs']) ? (int) $_GET['pairs'] : 6;
 $pairs = max(3, min($pairs, 12));

@@ -1,7 +1,5 @@
 <?php
-namespace Config;
 
-use PDO;
 
 class Database {
     private static $instance = null;

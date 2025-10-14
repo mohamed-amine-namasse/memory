@@ -1,8 +1,5 @@
 <?php
-namespace Classes;
-
-use Config\Database;
-use PDO;
+require 'config/database.php';
 
 class User {
     public int $id;
