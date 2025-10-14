@@ -183,13 +183,8 @@ header("Location: profile.php");
                         <input type="hidden" name="pairs" value="<?= $pairs ?>">
                         <br>
                         <button type="submit" name="submit" value="true">Enregistrer mon score</button>
-                        
+                        <button type="submit" name="reset">Réinitialiser la partie</button>
                     </form>
-                    <form method="post" action="game.php">
-                     <br>
-                    <button type="submit" name="reset">Réinitialiser la partie</button>
-                    </form>
-               </div>
                
                
             <?php endif; ?>
