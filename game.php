@@ -21,10 +21,9 @@ if (!isset($_GET['pairs']) || !ctype_digit($_GET['pairs']) || $_GET['pairs'] < 3
    
 }
 
-if(isset($_GET['player'] )){
-$username=$_GET['player'];}
-if(isset($_POST['username'] )){
-$username=$_POST['username'];}
+if(isset($_GET['player'])){
+$_SESSION['username']=$_GET['player'];}
+
 
 $game = new Game($pairs);
 
@@ -38,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reset'])) {
     $game->resetGame();
 
     // Redirige pour repartir de zéro
-    header("Location: game.php?$username&pairs=$resetPairs");
+    header("Location: game.php?".$_SESSION['username']."&pairs=$resetPairs");
     exit;
 }
 if (isset($_POST["submit"]) ) {
@@ -170,7 +169,7 @@ header("Location: profile.php");
            </div>
                 <?php if ($game->isFinished()): ?>
                 <div class="score">
-                    <h2>Félicitations ! <?= htmlspecialchars($username) ?> !</h2>
+                    <h2>Félicitations ! <?= htmlspecialchars($_SESSION['username']) ?> !</h2>
                     <p>Nombre de coups : <?= $game->getMoves() ?></p>
                     <p>Score : <?= $game->getScore() ?></p>
                     
