@@ -21,7 +21,10 @@ if (!isset($_GET['pairs']) || !ctype_digit($_GET['pairs']) || $_GET['pairs'] < 3
    
 }
 
-
+if(isset($_GET['player'] )){
+$username=$_GET['player'];}
+if(isset($_POST['username'] )){
+$username=$_POST['username'];}
 
 $game = new Game($pairs);
 
@@ -35,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reset'])) {
     $game->resetGame();
 
     // Redirige pour repartir de zéro
-    header("Location: game.php?pairs=$resetPairs");
+    header("Location: game.php?$username&pairs=$resetPairs");
     exit;
 }
 if (isset($_POST["submit"]) ) {
@@ -167,7 +170,7 @@ header("Location: profile.php");
            </div>
                 <?php if ($game->isFinished()): ?>
                 <div class="score">
-                    <h2>Félicitations ! <?= htmlspecialchars($_SESSION['username']) ?> !</h2>
+                    <h2>Félicitations ! <?= htmlspecialchars($username) ?> !</h2>
                     <p>Nombre de coups : <?= $game->getMoves() ?></p>
                     <p>Score : <?= $game->getScore() ?></p>
                     
@@ -178,6 +181,7 @@ header("Location: profile.php");
                         <input type="hidden" name="moves" value="<?= $game->getMoves() ?>">
                         <input type="hidden" name="pairs" value="<?= $game->getPairCount() ?>">
                         <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?? '' ?>">
+                        <input type="hidden" name="username" value="<?= htmlspecialchars($username) ?>">
                         <input type="hidden" name="reset" value="1">
                         <input type="hidden" name="pairs" value="<?= $pairs ?>">
                         <br>
