@@ -7,13 +7,31 @@ header {
   height: 90px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   background-color: white;
   border-bottom: 1px solid;
   border-color: grey;
-
+  padding: 10px 10% 10px 10%;
   overflow: hidden;
 }
+.logo_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+}
+.title {
+  font-family: "Poppins";
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(135deg, #667eea, #764ba2);
@@ -37,11 +55,10 @@ h2 {
 }
 ul {
   display: flex;
-  padding: 20px;
 }
 a {
   font-size: 15px;
-  font-weight: normal;
+  font-weight: bold;
   font-family: "Poppins";
   text-decoration: none;
 }

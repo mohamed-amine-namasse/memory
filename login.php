@@ -54,54 +54,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
 </head>
 <body>
     <header>
-        <ul>
-            
-            <?php if (!isset($_SESSION['email'])): ?>
-                    <li>
+         <div class=logo_title>
+                    <a href="index.php">
+                       <div class="logo"><img src="./assets/images/memory_pic.png" alt="logo page principal"></div>
+                    </a>
+                    <div class=title>Memory game</div>
+        </div>
+        
+            <ul>
+                
+                <?php if (!isset($_SESSION['email'])): ?>
+                        <li>
 
-                        <a href="./login.php" class="active">
-                            <div class="icon">
-                                <i class="fa fa-user-circle-o"></i>
-                            </div>
-                            <div class="name">Se connecter</div>
-                        </a>
+                            <a href="./login.php" class="active">
+                                <div class="icon">
+                                    <i class="fa fa-user-circle-o"></i>
+                                </div>
+                                <div class="name">Se connecter</div>
+                            </a>
 
-                    </li>
-                    <li>
-                        <a href="./register.php" class="#">
-                            <div class="icon">
-                                <i class="fa fa-user-plus"></i>
-                            </div>
-                            <div class="name">Inscription</div>
-                        </a>
-                    </li>
-            <?php else: ?>
-                     <li>
-                        <a href="./profile.php" class="#">
-                            <div class="icon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <div class="name">Profil</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./leaderboard.php" class="#">
-                            <div class="icon">
-                                <i class="fa fa-trophy"></i>
-                            </div>
-                            <div class="name">Classement</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./logout.php" class="#">
-                            <div class="icon">
-                                <i class="fa fa-sign-out"></i>
-                            </div>
-                            <div class="name">Deconnexion</div>
-                        </a>
-                    </li>
-            <?php endif; ?>
-        </ul>
+                        </li>
+                        <li>
+                            <a href="./register.php" class="#">
+                                <div class="icon">
+                                    <i class="fa fa-user-plus"></i>
+                                </div>
+                                <div class="name">Inscription</div>
+                            </a>
+                        </li>
+                <?php else: ?>
+                        <li>
+                            <a href="./profile.php" class="#">
+                                <div class="icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div class="name">Profil</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./leaderboard.php" class="#">
+                                <div class="icon">
+                                    <i class="fa fa-trophy"></i>
+                                </div>
+                                <div class="name">Classement</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./logout.php" class="#">
+                                <div class="icon">
+                                    <i class="fa fa-sign-out"></i>
+                                </div>
+                                <div class="name">Deconnexion</div>
+                            </a>
+                        </li>
+                <?php endif; ?>
+            </ul>
+    
     </header>
     <main>
         <?php if ($error): ?>
