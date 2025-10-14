@@ -180,7 +180,6 @@ header("Location: profile.php");
                         <input type="hidden" name="moves" value="<?= $game->getMoves() ?>">
                         <input type="hidden" name="pairs" value="<?= $game->getPairCount() ?>">
                         <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?? '' ?>">
-                        <input type="hidden" name="username" value="<?= htmlspecialchars($username) ?>">
                         <input type="hidden" name="reset" value="1">
                         <input type="hidden" name="pairs" value="<?= $pairs ?>">
                         <br>
