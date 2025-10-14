@@ -28,6 +28,12 @@ $scores = $stmt->fetchAll();
 
 <body>
        <header>
+        <div class=logo_title>
+                    <a href="index.php">
+                       <div class="logo"><img src="./assets/images/memory_pic.png" alt="logo page principal"></div>
+                    </a>
+                    <div class=title>Memory game</div>
+         </div>
         <ul>
             <li>
                 <a href="./index.php" class="#">

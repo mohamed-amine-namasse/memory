@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
                        <div class="logo"><img src="./assets/images/memory_pic.png" alt="logo page principal"></div>
                     </a>
                     <div class=title>Memory game</div>
-        </div>
+         </div>
         
             <ul>
                 
