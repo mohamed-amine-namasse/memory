@@ -180,13 +180,18 @@ header("Location: profile.php");
                         <input type="hidden" name="moves" value="<?= $game->getMoves() ?>">
                         <input type="hidden" name="pairs" value="<?= $game->getPairCount() ?>">
                         <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?? '' ?>">
-                        <input type="hidden" name="reset" value="1">
                         <input type="hidden" name="pairs" value="<?= $pairs ?>">
                         <br>
-                        <button type="submit" name="submit">Enregistrer mon score</button>
-                        <button type="submit" name="reset">Réinitialiser la partie</button>
+                        <button type="submit" name="submit" value="true">Enregistrer mon score</button>
+                        
+                    </form>
+                    <form method="post" action="game.php">
+                     <br>
+                    <button type="submit" name="reset">Réinitialiser la partie</button>
                     </form>
                </div>
+               
+               
             <?php endif; ?>
          
     </main>
